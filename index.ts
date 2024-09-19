@@ -1,39 +1,16 @@
-import axios from "axios";
-import { promises } from "dns";
-import { Tracing } from "trace_events";
+import express, { Request, Response } from 'express';
 
+const app = express();
+const port = 8000;
 
-type api =  {
-    
-    postId: string,
-    id: string,
-    name: string,
-    email: string,
-    body: string
-}
+app.get('/', (req: Request, res: Response) => {
+    res.send("hello_world");
+});
 
-type days = {
-    details: string;
-}
+app.get('/hello', (req: Request, res: Response) => {
+    res.send("hello_da_pundai");
+});
 
-
-
-const app = async(): Promise<void> =>{
-  
-    const url = `https://jsonplaceholder.typicode.com/users`
-
-    try {
-         let response = await axios.get<api[]>(url)
-        //  let data = response;
-        //  console.log(data)
-        response.data.forEach(deta => {
-            console.log(deta.name)
-        })
-        
-    }
-    catch (err) { 
-      console.log(err)
-    }
-}
-
-app()
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
