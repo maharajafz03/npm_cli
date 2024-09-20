@@ -14,4 +14,4 @@ app.get('/hello', (req: Request, res: Response) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-//it doezs not work 
+//it doezs not work do you know how your are doing the concepts... managing directors
